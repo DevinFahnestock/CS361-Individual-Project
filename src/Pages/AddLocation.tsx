@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useLocalStorage } from '../lib/useLocalStorage'
 
 const AddLocation = () => {
@@ -6,11 +7,13 @@ const AddLocation = () => {
   const [description, setDescription] = useState('')
 
   const [locations, setLocations] = useLocalStorage('locations')
-
+  const navigate = useNavigate()
   const addNewLocation = () => {
     let tempLocations = locations() || {}
-    tempLocations[Math.floor(Math.random() * 999999)] = { name: name, description: description }
+    const newId = Math.floor(Math.random() * 999999)
+    tempLocations[newId] = { name: name, description: description }
     setLocations(tempLocations)
+    navigate(`/location/${newId}`)
   }
 
   return (
