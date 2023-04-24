@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useLocalStorage } from '../lib/useLocalStorage'
+import { useLocalStorage } from '../../lib/useLocalStorage'
 import './styles.css'
 
 const NavBar = ({ loggedIn }: any) => {

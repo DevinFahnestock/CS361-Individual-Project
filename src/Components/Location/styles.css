@@ -1,0 +1,11 @@
+.Location {
+    background-color: #151430;
+
+    padding: 20px;
+    margin: 10px;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 15px;
+}

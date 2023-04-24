@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Locations from '../Components/Locations'
+import Locations from '../Components/Locations/Locations'
 
 const Home = ({ loggedIn }: any) => {
   if (loggedIn) {
