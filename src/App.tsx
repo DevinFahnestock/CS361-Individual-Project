@@ -8,7 +8,7 @@ import MyAccount from './Pages/Account/MyAccount'
 import Home from './Pages/Home'
 import NavBar from './Components/NavBar'
 import { useLocalStorage } from './lib/useLocalStorage'
-import AddLocation from './Pages/Account/AddLocation'
+import AddLocation from './Pages/AddLocation'
 
 function App() {
   const [username] = useLocalStorage('username')

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useLocalStorage } from '../../lib/useLocalStorage'
+import { useLocalStorage } from '../lib/useLocalStorage'
 
 const AddLocation = () => {
   const [name, setName] = useState('')
@@ -9,8 +9,7 @@ const AddLocation = () => {
 
   const addNewLocation = () => {
     let tempLocations = locations() || {}
-    tempLocations[name] = { name: name, description: description }
-    console.log(tempLocations)
+    tempLocations[Math.floor(Math.random() * 999999)] = { name: name, description: description }
     setLocations(tempLocations)
   }
 

@@ -9,9 +9,8 @@ const Locations = () => {
 
   return (
     <div>
-      {Object.keys(locations).map((location: any) => (
-        <Location location={locations[location]} />
-      ))}
+      {locations &&
+        Object.keys(locations).map((location: any) => <Location id={location} location={locations[location]} />)}
     </div>
   )
 }

@@ -19,3 +19,7 @@
 .NavBar a:hover {
     color: #ffbc95;
 }
+
+.Review {
+    border: 1px solid #ffbc95;
+}
