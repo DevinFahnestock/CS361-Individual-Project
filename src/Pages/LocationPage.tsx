@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Location from '../Components/Location/Location'
 import { Review } from '../Components/Review/Review'
@@ -6,17 +6,19 @@ import { useLocalStorage } from '../lib/useLocalStorage'
 
 export const LocationPage = () => {
   const { id } = useParams()
-  const [locations] = useLocalStorage('locations')
-  const [reviews] = useLocalStorage('reviews')
 
-  const tempLocations = locations()
-  const location = tempLocations[Object.keys(tempLocations).find((ele) => ele === id) || '']
+  const [location, setLocation] = useState<any>({})
 
-  const tempReviews = reviews()
+  const getData = async () => {
+    const locationData = await fetch(`http://localhost:3001/trail/${id}`)
+    const json = await locationData.json()
+    setLocation(json)
+  }
 
-  const locationReviews: any = Object.keys(tempReviews).filter((ele) => tempReviews[ele].locationId === id) || []
+  useEffect(() => {
+    getData()
+  }, [])
 
-  locationReviews.forEach((review: any) => console.log(review, tempReviews[review]))
   if (!location) {
     return (
       <div>
@@ -28,9 +30,9 @@ export const LocationPage = () => {
   return (
     <div>
       <Location id={id} location={location} />
-      {locationReviews.map((review: any) => (
+      {/* {locationReviews.map((review: any) => (
         <Review key={review} review={tempReviews[review]} />
-      ))}
+      ))} */}
     </div>
   )
 }

@@ -1,18 +1,23 @@
-import React from 'react'
-import { useLocalStorage } from '../../lib/useLocalStorage'
+import { useEffect, useState } from 'react'
 import Location from '../Location/Location'
 
 const Locations = () => {
-  const [getLocations] = useLocalStorage('locations')
+  const [locations, setLocations] = useState<Array<any>>([])
 
-  const locations = getLocations()
+  const getData = async () => {
+    const locationData = await fetch('http://localhost:3001/trail')
+    const json = await locationData.json()
+    setLocations(json)
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
 
   return (
     <div>
       {locations &&
-        Object.keys(locations).map((location: any) => (
-          <Location key={location} id={location} location={locations[location]} />
-        ))}
+        locations.map((location: any) => <Location key={location._id} id={location._id} location={location} />)}
     </div>
   )
 }

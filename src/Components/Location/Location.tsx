@@ -6,7 +6,9 @@ const Location = ({ location, id }: any) => {
     <div className='Location'>
       <Link to={`/location/${id}`}>{location?.name}</Link>
 
-      <div>{location?.description}</div>
+      <div>Location: {location?.location}</div>
+      <div>Length: {location?.length} miles</div>
+      <div>Difficulty: {location?.difficulty}</div>
 
       <Link to={`/newreview/${id}`}>
         <button>New Review</button>

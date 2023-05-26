@@ -8,7 +8,7 @@ import MyAccount from './Pages/Account/MyAccount'
 import Home from './Pages/Home/Home'
 import NavBar from './Components/NavBar/NavBar'
 import { useLocalStorage } from './lib/useLocalStorage'
-import AddLocation from './Pages/AddLocation'
+import CreateTrailPage from './Pages/CreateTrailPage'
 import { NewReview } from './Pages/NewReview/NewReview'
 import { LocationPage } from './Pages/LocationPage'
 
@@ -27,7 +27,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/myaccount' element={<MyAccount />} />
-        <Route path='/addlocation' element={<AddLocation />} />
+        <Route path='/addlocation' element={<CreateTrailPage />} />
         <Route path='/location/:id' element={<LocationPage />} />
         <Route path='/newreview/:locationId' element={<NewReview />} />
       </Routes>
