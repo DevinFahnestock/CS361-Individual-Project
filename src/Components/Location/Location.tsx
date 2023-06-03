@@ -4,15 +4,13 @@ import './styles.css'
 const Location = ({ location, id }: any) => {
   return (
     <div className='Location'>
-      <Link to={`/location/${id}`}>{location?.name}</Link>
+      <Link to={`/location/${id}`}>
+        <h1>{location?.name}</h1>
+      </Link>
 
       <div>Location: {location?.location}</div>
       <div>Length: {location?.length} miles</div>
       <div>Difficulty: {location?.difficulty}</div>
-
-      <Link to={`/newreview/${id}`}>
-        <button>New Review</button>
-      </Link>
     </div>
   )
 }

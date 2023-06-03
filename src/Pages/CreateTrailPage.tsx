@@ -1,6 +1,8 @@
 import React, { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import './styles.css'
+
 const CreateTrailPage = () => {
   const nameRef = useRef<HTMLInputElement | null>(null)
   const locationRef = useRef<HTMLInputElement | null>(null)
@@ -21,7 +23,7 @@ const CreateTrailPage = () => {
   }
 
   return (
-    <div>
+    <div className='addTrailForm'>
       <form
         onSubmit={(event) => {
           event.preventDefault()
@@ -34,19 +36,42 @@ const CreateTrailPage = () => {
         }}
       >
         <h1>Add New Location</h1>
-        Name:
-        <input type='text' name='name' ref={nameRef}></input>
-        <br />
-        Location:
-        <input type='text' name='location' ref={locationRef}></input>
-        <br />
-        Difficulty:
-        <input type='text' name='difficulty' ref={DifficultyRef}></input>
-        <br />
-        Length:
-        <input type='text' name='length' ref={lengthRef}></input>
-        <br />
-        <button type='submit'>Create!</button>
+        <table>
+          <tr>
+            <td>Name</td>
+            <td>
+              <input type='text' name='name' ref={nameRef}></input>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Location</td>
+            <td>
+              {' '}
+              <input type='text' name='location' ref={locationRef}></input>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Difficulty</td>
+            <td>
+              <input type='text' name='difficulty' ref={DifficultyRef}></input>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Length</td>
+            <td>
+              <input type='text' name='length' ref={lengthRef}></input>
+            </td>
+          </tr>
+
+          <tr>
+            <td colSpan={2}>
+              <button type='submit'>Create!</button>
+            </td>
+          </tr>
+        </table>
       </form>
     </div>
   )

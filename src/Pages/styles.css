@@ -1,0 +1,16 @@
+.addTrailForm {
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    margin: 10px;
+}
+
+table td {
+    padding: 2px;
+}
+
+table button {
+    width: 100px;
+}

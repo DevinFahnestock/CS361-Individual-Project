@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Location from '../Components/Location/Location'
-import { Review } from '../Components/Review/Review'
-import { useLocalStorage } from '../lib/useLocalStorage'
+import Comment from '../Components/Location/Comment'
+import CreateComment from '../Components/Location/CreateComment'
 
 export const LocationPage = () => {
   const { id } = useParams()
 
   const [location, setLocation] = useState<any>({})
+  const [comments, setComments] = useState<any>([])
 
   const getData = async () => {
     const locationData = await fetch(`http://localhost:3001/trail/${id}`)
+    const commentData = await fetch(`http://localhost:3001/comment/trail/${id}`)
     const json = await locationData.json()
     setLocation(json)
+    setComments(await commentData.json())
   }
 
   useEffect(() => {
@@ -30,9 +33,10 @@ export const LocationPage = () => {
   return (
     <div>
       <Location id={id} location={location} />
-      {/* {locationReviews.map((review: any) => (
-        <Review key={review} review={tempReviews[review]} />
-      ))} */}
+      {comments.map((comment: any) => (
+        <Comment key={comment._id} comment={comment} />
+      ))}
+      <CreateComment trailId={id} />
     </div>
   )
 }
